@@ -69,11 +69,7 @@ Retrieve information about multiple directors by providing an array of DINs.
   - `404 Not Found`: One or more directors with the given DINs not found
   - `500 Internal Server Error`: Internal Server Error
 
-## Components
-
-### Schemas
-
-#### Company
+### Company Schema
 
 Represents company information.
 
@@ -107,7 +103,7 @@ Represents company information.
   "day": "integer"
 }
 
-CompanyResponse
+### CompanyResponse
 Represents the response for a single company query, including details about the company and its directors.
 
 {
@@ -122,7 +118,7 @@ Represents the response for a single company query, including details about the 
 }
 
 Person
-Represents director information.
+- **Represents director information.
 
 {
   "din": "string",
@@ -136,10 +132,10 @@ Represents director information.
   "day": "integer"
 }
 
-Examples
-Example Request for Single Company Information
+### Examples
+- **Example Request for Single Company Information
 
-GET /api/v1/company/U98200UT2023PTC015565?include=directors
+- **GET /api/v1/company/U98200UT2023PTC015565?include=directors
 
 Example Request for Multiple Companies Information
 
