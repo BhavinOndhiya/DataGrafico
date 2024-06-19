@@ -102,24 +102,28 @@ Represents company information.
   "month": "integer",
   "day": "integer"
 }
+```
 
 ### CompanyResponse
 Represents the response for a single company query, including details about the company and its directors.
-
-{
-  "company": {
-    "$ref": "#/components/schemas/Company"
-  },
-  "directors": [
+    
+    ```json
     {
-      "$ref": "#/components/schemas/Person"
+    "company": {
+        "$ref": "#/components/schemas/Company"
+    },
+    "directors": [
+        {
+        "$ref": "#/components/schemas/Person"
+        }
+    ]
     }
-  ]
-}
+    ```
 
-Person
+### Person
 - **Represents director information.
 
+```json
 {
   "din": "string",
   "name": "string",
@@ -131,33 +135,28 @@ Person
   "month": "integer",
   "day": "integer"
 }
+```
 
 ### Examples
-- **Example Request for Single Company Information
 
-- **GET /api/v1/company/U98200UT2023PTC015565?include=directors
+#### Example Request for Single Company Information
 
-Example Request for Multiple Companies Information
 
-POST /api/v1/companies
-Content-Type: application/json
+### Example Request for Single Director Information
 
-[
-  "U98200UT2023PTC015565",
-  "U98200UT2023PTC015566"
-]
+- **GET /api/v1/director/0010142513
 
-Example Request for Single Director Information
+### Example Request for Multiple Directors Information
 
-GET /api/v1/director/0010142513
+- **POST /api/v1/directors
+* **Content-Type: application/json
 
-Example Request for Multiple Directors Information
-
-POST /api/v1/directors
-Content-Type: application/json
-
-[
-  "0010142513",
-  "0010142514"
-]
+```json
+{
+  "din": [
+    "0010142513",
+    "0010142514"
+  ]
+}
+```
 
