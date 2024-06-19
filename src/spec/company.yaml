@@ -1,0 +1,56 @@
+type: object
+properties:
+  cin:
+    type: string
+  company_name:
+    type: string
+  roc:
+    type: string
+  company_reg_number:
+    type: integer
+  sub_category:
+    type: string
+  company_class:
+    type: string
+  no_members:
+    type: integer
+  date_of_registration:
+    type: string
+    format: date-time
+  email:
+    type: string
+  listed_flag:
+    type: string
+  last_agm_date:
+    type: string
+  balance_sheet_date:
+    type: string
+  registered_state:
+    type: string
+  status:
+    type: string
+  category:
+    type: string
+  company_type:
+    type: string
+  authorized_capital:
+    type: integer
+  paidup_capital:
+    type: integer
+  activity_code:
+    type: integer
+  registered_office_address:
+    type: string
+  date:
+    type: string
+    format: date-time
+  country:
+    type: string
+  currency:
+    type: string
+  year:
+    type: integer
+  month:
+    type: integer
+  day:
+    type: integer

@@ -1,0 +1,209 @@
+openapi: 3.0.0
+info:
+  title: Indian Private Companies API by GraphBud Technologies
+  version: v1.0.1
+  description: API for accessing MCA provided company details.
+
+servers:
+  - url: https://api.datagrafi.co
+
+paths:
+  /api/v1/company/{cin}: 
+    get:
+      summary: Get single company information by providing CIN number
+      parameters:
+        - in: path
+          name: cin
+          required: true
+          description: Company Identification Number (CIN)
+          schema:
+            type: string
+        - in: query
+          name: include
+          required: false
+          description: Include all director's details.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompanyResponse'
+        '404':
+          description: Company not found with Specified CIN
+        '500':
+          description: Internal Server Error
+
+  /api/v1/companies:
+    post:
+      summary: Get information about all the companies by providing multiple CIN numbers.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+                pattern: '^[A-Z0-9]{21}$'
+              example: ["U98200UT2023PTC015565", "U98200UT2023PTC015566"]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Company'
+        '404':
+          description: One or more companies with the given CINs not found
+        '500':
+          description: Internal Server Error
+          
+  /api/v1/director/{din}:
+    get:
+      summary: Get director details by providing DIN number.
+      parameters:
+        - in: path
+          name: din
+          required: true
+          description: Director Identification Number
+          schema:
+            type: string
+            pattern: '^[0-9A-Z]{10}$'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+        '404':
+          description: Director details not found with the given DIN.
+        '500':
+          description: Internal Server Error
+
+  /api/v1/directors: 
+    post:
+      summary: Get multiple director details by providing multiple DIN number.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              items:
+                type: string
+                pattern: '^[0-9A-Z]{10}$'
+              example: ["0010142513", "0010142514"]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Company'
+        '404':
+          description: One or more companies with the given DINs not found
+        '500':
+          description: Internal Server Error
+          
+components:
+  schemas:
+    Company:
+      type: object
+      properties:
+        cin:
+          type: string
+        company_name:
+          type: string
+        roc:
+          type: string
+        company_reg_number:
+          type: integer
+        sub_category:
+          type: string
+        company_class:
+          type: string
+        no_members:
+          type: integer
+        date_of_registration:
+          type: string
+          format: date-time
+        email:
+          type: string
+        listed_flag:
+          type: string
+        last_agm_date:
+          type: string
+        balance_sheet_date:
+          type: string
+        registered_state:
+          type: string
+        status:
+          type: string
+        category:
+          type: string
+        company_type:
+          type: string
+        authorized_capital:
+          type: integer
+        paidup_capital:
+          type: integer
+        activity_code:
+          type: integer
+        registered_office_address:
+          type: string
+        date:
+          type: string
+          format: date-time
+        country:
+          type: string
+        currency:
+          type: string
+        year:
+          type: integer
+        month:
+          type: integer
+        day:
+          type: integer
+
+    CompanyResponse:
+      type: object
+      properties:
+        company:
+          $ref: '#/components/schemas/Company'
+        directors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+    Person:
+      type: object
+      properties:
+        din:
+          type: string
+        name:
+          type: string
+        begin_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        cin:
+          type: string
+        date:
+          type: string
+          format: date-time
+        year:
+          type: integer
+        month:
+          type: integer
+        day:
+          type: integer
+
