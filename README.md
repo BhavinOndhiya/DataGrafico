@@ -144,11 +144,11 @@ Represents company information.
 
 ### Example Request for Single Director Information
 
-- **Method ** `GET /api/v1/director/0010142513`
+- **Method:** `GET /api/v1/director/0010142513`
 
 ### Example Request for Multiple Directors Information
 
-- **Method** `POST /api/v1/directors`
+- **Method:** `POST /api/v1/directors`
 * **Content-Type:** `application/json`
 
 ```json
