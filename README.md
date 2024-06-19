@@ -105,7 +105,7 @@ Represents company information.
 ```
 
 ### CompanyResponse
-Represents the response for a single company query, including details about the company and its directors.
+- **Represents the response for a single company query, including details about the company and its directors**.
     
     ```json
     {
@@ -121,7 +121,7 @@ Represents the response for a single company query, including details about the 
     ```
 
 ### Person
-- **Represents director information.
+- **Represents director information**.
 
 ```json
 {
@@ -144,12 +144,12 @@ Represents the response for a single company query, including details about the 
 
 ### Example Request for Single Director Information
 
-- **GET /api/v1/director/0010142513
+- **Method ** `GET /api/v1/director/0010142513`
 
 ### Example Request for Multiple Directors Information
 
-- **POST /api/v1/directors
-* **Content-Type: application/json
+- **Method** `POST /api/v1/directors`
+* **Content-Type:** `application/json`
 
 ```json
 {
